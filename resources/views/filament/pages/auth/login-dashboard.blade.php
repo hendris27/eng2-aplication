@@ -13,17 +13,14 @@
 @section('content')
     <div class="flex min-h-screen flex-col md:flex-row">
         <!-- Kiri: Gambar atau background, hanya tampil di md ke atas -->
-      <div
-    class="hidden md:flex min-h-screen w-[60%] items-center justify-center"
-    style="
-        background-image: url('{{ asset('images/bg-production2.png') }}');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 80vh;
-    "
->
-</div>
+        <div class="height:80vh hidden w-[60%] items-center justify-center md:flex">
+            <img
+                src="{{ asset('storage/photo/bg-login-b.jpg') }}"
+                alt="Logo"
+                class="height:70vh bg-repeat:no-repeat mb-2 object-contain"
+                onerror="this.onerror=null; this.src='{{ asset('storage/photo/bg-login-b.jpg') }}'"
+            >
+        </div>
 
         <style>
             @media (max-width: 700px) {
@@ -33,16 +30,16 @@
             }
         </style>
         <!-- Kanan: Form Login, full width di mobile/tablet -->
-        <div
-            class="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-purple-600 via-blue-600 to-purple-900 via-blue-600 to-purple-900 px-6 py-6 md:w-[40%]">
+        <div class="from blue-600 flex min-h-screen w-full items-center justify-center bg-blue-600 px-6 py-6 md:w-[40%]">
             <div
                 class="bg-green flex w-full max-w-md flex-col items-center rounded-xl border border-white border-opacity-20 p-6 shadow-lg">
-                           <img src="{{ asset('storage/photo/Siix.png') }}"
+                <img
+                    src="{{ asset('storage/photo/Siix.png') }}"
                     alt="Logo"
                     class="mb-2 h-20 w-32 object-contain"
                     onerror="this.onerror=null; this.src='{{ asset('storage/photo/Siix.jpg') }}'"
                 >
-                  
+
                 <p class="mb-6 text-center text-[20px] font-bold text-white">Input Your NIK and Your Password</p>
                 @if ($error)
                     <div class="mb-4 w-full text-center text-sm text-red-600">{{ $error }}</div>
@@ -51,7 +48,7 @@
                     <div class="mb-4 w-full text-center text-sm text-red-600">{{ session('csrf_error') }}</div>
                 @endif
                 <form
-                    method="POST" 
+                    method="POST"
                     action="{{ route('admin.login') }}"
                     class="flex w-full flex-col gap-4"
                 >
